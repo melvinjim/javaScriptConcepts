@@ -1,7 +1,9 @@
+const people = new Presentation('Melvin', 18);
+people.greetings();
+
 document.getElementById('continue').addEventListener('click', function() {
     document.getElementById("reference").style.display = "none";
     document.getElementById("Registration").style.display = "block";
-
 });
 
 document.getElementById('save').addEventListener('click', function() {
@@ -20,21 +22,16 @@ document.getElementById('multiplicar').addEventListener('click', function() {
     firstNumber = document.getElementById("number-one").value;
     secondNumber = document.getElementById("number-two").value;
 
-    var result = multiplication(firstNumber,secondNumber);
+    var numbers = new Calculator(firstNumber,secondNumber);
+    let total = numbers.multiplication();
 
-    if (isNaN(result) || result == undefined) {
+    if (total) {
+        document.getElementById("text").innerHTML = "The result of your multiplication is: " + total ;
+
+    } else if (isNaN(total) || total == undefined) {
         document.getElementById("result").innerHTML = "You must enter data only of numerical type";
-    } else {
-       document.getElementById("result").innerHTML = "The result of your multiplication is: " + result;
-       var numbers = new calculadora(firstNumber,secondNumber);
-        numbers.operation();
     }
 });
-
-var multiplication = (firstNumber, secondNumber) => {
-    operation = firstNumber * secondNumber;
-    return operation;
-}
 
 document.getElementById('clear').addEventListener('click', function() {
     document.getElementById("number-one").value = " ";
